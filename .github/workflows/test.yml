@@ -22,6 +22,7 @@ jobs:
           echo "three=${{ steps.three.outcome }}"
           echo "::endgroup::"
           echo "FAIL=${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }}" >> $GITHUB_ENV
+          echo "${{ env.FAIL }}"
           if [ env.FAIL ]; then echo "failed!!"; fi
           if [ ${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }} ]; then \
             echo "failed"; \
