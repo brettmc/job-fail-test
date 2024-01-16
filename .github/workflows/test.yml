@@ -23,7 +23,12 @@ jobs:
       id: post-run-command
       with:
         post: |
-          if [ ${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }} ]; then echo "failed"; fi
+          if [ ${{ \
+            steps.one.outcome == 'failure' || \
+            steps.two.outcome == 'failure' || \
+            steps.three.outcome == 'failure' \
+          }} ]; then\
+          echo "failed"; fi
 
     - id: one
       #if: ${{ 1 == 2 }}
