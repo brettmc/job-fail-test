@@ -28,6 +28,14 @@ jobs:
           echo "two=${{ steps.two.outcome }}"
           echo "three=${{ steps.three.outcome }}"
           echo "::endgroup::"
+          X="true"
+          Y="false"
+          XB=true
+          YB=false
+          if [ $X ]; then echo "X"; fi
+          if [ $XB ]; then echo "XB"; fi
+          if [ $Y ]; then echo "Y"; fi
+          if [ $YB ]; then echo "YB"; fi
           FAIL="${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
           PASS="${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
           echo "FAIL=${FAIL}"
