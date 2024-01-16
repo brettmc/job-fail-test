@@ -21,11 +21,10 @@ jobs:
       with:
         post: |
           FAIL=(${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }})
-          echo "::error::One or more steps failed"
           echo "::notice::one=${{ steps.one.outcome }}"
           echo "::notice::two=${{ steps.two.outcome }}"
           echo "::notice::three=${{ steps.three.outcome }}"
-          exit 1
+          [[ $FAIL ]] && echo "::error::One or more steps failed" && exit 1
 
     - id: one
       run: exit 1
