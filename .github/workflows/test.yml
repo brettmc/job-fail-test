@@ -27,9 +27,12 @@ jobs:
           [[ $FAIL ]] && echo "::error::One or more steps failed" && exit 1
 
     - id: one
+      continue-on-error: true
       run: exit 1
     - id: two
+      continue-on-error: true
       run: exit 0
     - id: three
+      continue-on-error: true
       run: exit 0
 
