@@ -21,8 +21,8 @@ jobs:
 
     - uses: gacts/run-and-post-run@v1
       id: post-run-command
-      post-shell: ""
       with:
+        post-shell: ""
         post: |
           echo "start"
           X="true"
