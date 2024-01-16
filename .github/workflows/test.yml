@@ -24,7 +24,7 @@ jobs:
           echo "::notice::one=${{ steps.one.outcome }}"
           echo "::notice::two=${{ steps.two.outcome }}"
           echo "::notice::three=${{ steps.three.outcome }}"
-          [[ $FAIL ]] && echo "::error::One or more steps failed" && exit 1
+          if $FAIL; then echo "::error::One or more steps failed"; exit 1; fi
 
     - id: one
       if: ${{ 1 == 2 }}
