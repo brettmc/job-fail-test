@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  php:
+  main:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -20,7 +20,7 @@ jobs:
         steps.three.outcome != 'success'
       with:
         post: |
-          FAIL=(${{ steps.*.outcome == 'failure' }}
+          FAIL=(${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }})
           echo "::error::One or more steps failed"
           echo "::notice::one=${{ steps.one.outcome }}"
           echo "::notice::two=${{ steps.two.outcome }}"
