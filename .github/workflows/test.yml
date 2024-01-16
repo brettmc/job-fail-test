@@ -58,4 +58,14 @@ jobs:
     - id: three
       continue-on-error: true
       run: exit 0
+    - id: four
+      run: |
+        X="true"
+        Y="false"
+        XB=true
+        YB=false
+        echo $X
+        echo $XB
+        echo $Y
+        echo $YB
 
