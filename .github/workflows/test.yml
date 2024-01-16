@@ -24,6 +24,7 @@ jobs:
         #  STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
         post-shell: bash -e
         post: |
+          echo "start"
           #echo "::group::Step results"
           #echo "one=${{ steps.one.outcome }}"
           #echo "two=${{ steps.two.outcome }}"
@@ -37,6 +38,7 @@ jobs:
           echo $XB
           echo $Y
           echo $YB
+          echo "finish"
 
     - id: one
       #if: ${{ 1 == 2 }}
@@ -50,6 +52,7 @@ jobs:
       run: exit 0
     - id: four
       run: |
+        echo "start"
         X="true"
         Y="false"
         XB=true
@@ -58,4 +61,4 @@ jobs:
         echo $XB
         echo $Y
         echo $YB
-
+        echo "finish"
