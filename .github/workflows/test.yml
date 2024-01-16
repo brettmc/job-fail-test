@@ -32,6 +32,10 @@ jobs:
           Y="false"
           XB=true
           YB=false
+          echo $X
+          echo $XB
+          echo $Y
+          echo $YB
           if [ $X ]; then echo "X"; fi
           if [ $XB ]; then echo "XB"; fi
           if [ $Y ]; then echo "Y"; fi
