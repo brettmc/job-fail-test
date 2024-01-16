@@ -1,0 +1,36 @@
+name: test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: gacts/run-and-post-run@v1
+      id: post-run-command
+      if: |
+        steps.one.outcome == 'failure' ||
+        steps.two.outcome != 'success' ||
+        steps.three.outcome != 'success'
+      with:
+        post: |
+          FAIL=(${{ steps.*.outcome == 'failure' }}
+          echo "::error::One or more steps failed"
+          echo "::notice::one=${{ steps.one.outcome }}"
+          echo "::notice::two=${{ steps.two.outcome }}"
+          echo "::notice::three=${{ steps.three.outcome }}"
+          exit 1
+
+    - id: one
+      run: exit 1
+    - id: two
+      run: exit 0
+    - id: three
+      run: exit 0
+
