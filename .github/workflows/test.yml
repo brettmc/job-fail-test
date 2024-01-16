@@ -28,7 +28,7 @@ jobs:
 
     - id: one
       continue-on-error: true
-      run: exit 1
+      run: exit 0
     - id: two
       continue-on-error: true
       run: exit 0
