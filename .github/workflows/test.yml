@@ -27,6 +27,7 @@ jobs:
           echo "::endgroup::"
           FAIL=${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }}
           echo "$FAIL"
+          echo ${{ toJson(steps) }}
           if [ "$FAIL" != "" ]; then echo "failed"; fi
           if [ "$FAIL" != "" ]; then echo "::error::One or more steps failed"; exit 1; fi
 
