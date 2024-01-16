@@ -22,6 +22,7 @@ jobs:
         #env:
         #  STEPS_FAIL: "${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
         #  STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
+        post-shell: bash -e
         post: |
           echo "::group::Step results"
           echo "one=${{ steps.one.outcome }}"
