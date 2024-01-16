@@ -25,6 +25,8 @@ jobs:
             echo "::error::One or more steps failed"; \
             exit 1; \
           fi
+          if [ true == true ]; then echo "::notice::pass"; fi
+          if [ true == false ]; then echo "::notice::fail"; fi
 
     - id: one
       if: ${{ 1 == 2 }}
