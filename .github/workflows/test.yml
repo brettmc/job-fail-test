@@ -25,8 +25,8 @@ jobs:
           echo "two=${{ steps.two.outcome }}"
           echo "three=${{ steps.three.outcome }}"
           echo "::endgroup::"
-          FAIL="${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }}"
-          PASS="${{ steps.one.outcome == 'success' || steps.one.outcome == 'skipped' }}"
+          export FAIL="${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }}"
+          export PASS="${{ steps.one.outcome == 'success' || steps.one.outcome == 'skipped' }}"
           echo "FAIL=${FAIL}"
           echo "PASS=${PASS}"
           if [ "$FAIL" == "true" ]; then echo "failed"; fi
