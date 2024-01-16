@@ -24,11 +24,11 @@ jobs:
         #  STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
         post-shell: bash -e
         post: |
-          echo "::group::Step results"
-          echo "one=${{ steps.one.outcome }}"
-          echo "two=${{ steps.two.outcome }}"
-          echo "three=${{ steps.three.outcome }}"
-          echo "::endgroup::"
+          #echo "::group::Step results"
+          #echo "one=${{ steps.one.outcome }}"
+          #echo "two=${{ steps.two.outcome }}"
+          #echo "three=${{ steps.three.outcome }}"
+          #echo "::endgroup::"
           X="true"
           Y="false"
           XB=true
@@ -37,17 +37,6 @@ jobs:
           echo $XB
           echo $Y
           echo $YB
-          if [ $X ]; then echo "X"; fi
-          if [ $XB ]; then echo "XB"; fi
-          if [ $Y ]; then echo "Y"; fi
-          if [ $YB ]; then echo "YB"; fi
-          FAIL="${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
-          PASS="${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
-          echo "FAIL=${FAIL}"
-          echo "PASS=${PASS}"
-          #if [ "$FAIL" == "true" ]; then echo "failed"; fi
-          #if [ "$FAIL" == "false" ]; then echo "passed"; fi
-          #if [ "$FAIL" != "" ]; then echo "::error::One or more steps failed"; exit 1; fi
 
     - id: one
       #if: ${{ 1 == 2 }}
