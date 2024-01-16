@@ -1,9 +1,5 @@
 name: test
 
-on:
-  push:
-    branches: [ main ]
-
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -14,22 +10,14 @@ jobs:
 
     - uses: gacts/run-and-post-run@v1
       id: post-run-command
-      if: |
-        steps.one.outcome == 'failure' ||
-        steps.two.outcome != 'success' ||
-        steps.three.outcome != 'success'
       with:
-        #env:
-        #  STEPS_FAIL: "${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
-        #  STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
-        post-shell: bash -e
+        post: if [ true ]; then echo "failed"; fi
+
+    - uses: gacts/run-and-post-run@v1
+      id: post-run-command
+      with:
         post: |
           echo "start"
-          #echo "::group::Step results"
-          #echo "one=${{ steps.one.outcome }}"
-          #echo "two=${{ steps.two.outcome }}"
-          #echo "three=${{ steps.three.outcome }}"
-          #echo "::endgroup::"
           X="true"
           Y="false"
           XB=true
