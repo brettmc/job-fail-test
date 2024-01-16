@@ -22,18 +22,8 @@ jobs:
     - uses: gacts/run-and-post-run@v1
       id: post-run-command
       with:
-        post-shell: ""
         post: |
-          echo "start"
-          X="true"
-          Y="false"
-          XB=true
-          YB=false
-          echo $X
-          echo $XB
-          echo $Y
-          echo $YB
-          echo "finish"
+          if [ ${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }} ]; then echo "failed"; fi
 
     - id: one
       #if: ${{ 1 == 2 }}
