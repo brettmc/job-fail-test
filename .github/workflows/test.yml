@@ -19,19 +19,19 @@ jobs:
         steps.two.outcome != 'success' ||
         steps.three.outcome != 'success'
       with:
-        env:
-          STEPS_FAIL: "${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
-          STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
+        #env:
+        #  STEPS_FAIL: "${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
+        #  STEPS_PASS: "${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
         post: |
           echo "::group::Step results"
           echo "one=${{ steps.one.outcome }}"
           echo "two=${{ steps.two.outcome }}"
           echo "three=${{ steps.three.outcome }}"
           echo "::endgroup::"
-          #export FAIL="${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }}"
-          #export PASS="${{ steps.one.outcome == 'success' || steps.one.outcome == 'skipped' }}"
-          echo "FAIL=${env.STEPS_FAIL}"
-          echo "PASS=${env.STEPS_PASS}"
+          FAIL="${{ (steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure') }}"
+          PASS="${{ (steps.one.outcome == 'success' || steps.one.outcome == 'skipped') }}"
+          echo "FAIL=${FAIL}"
+          echo "PASS=${PASS}"
           #if [ "$FAIL" == "true" ]; then echo "failed"; fi
           #if [ "$FAIL" == "false" ]; then echo "passed"; fi
           #if [ "$FAIL" != "" ]; then echo "::error::One or more steps failed"; exit 1; fi
