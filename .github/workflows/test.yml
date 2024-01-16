@@ -20,7 +20,7 @@ jobs:
             echo "failed"; \
           fi
 
-    - uses: webiny/action-post-run@3
+    - uses: webiny/action-post-run@3.0.0
       id: check-for-failures
       with:
         run: |
