@@ -16,8 +16,8 @@ jobs:
       id: post-run-command
       with:
         post: |
-          if [ true ]; then echo "failed"; fi
-          if [ false ]; then echo "passed"; fi
+          if [ true == true ]; then echo "failed"; fi
+          if [ false == true ]; then echo "passed"; fi
 
     #- uses: gacts/run-and-post-run@v1
     #  id: post-run-command
