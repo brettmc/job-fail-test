@@ -27,7 +27,7 @@ jobs:
           fi
 
     - id: one
-      #if: ${{ 1 == 2 }}
+      if: ${{ 1 == 2 }}
       continue-on-error: true
       run: exit 1
     - id: two
