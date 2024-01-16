@@ -20,10 +20,12 @@ jobs:
         steps.three.outcome != 'success'
       with:
         post: |
+          echo "::group::Step results"
+          echo "one=${{ steps.one.outcome }}"
+          echo "two=${{ steps.two.outcome }}"
+          echo "three=${{ steps.three.outcome }}"
+          echo "::endgroup::"
           FAIL=(${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }})
-          echo "::notice::one=${{ steps.one.outcome }}"
-          echo "::notice::two=${{ steps.two.outcome }}"
-          echo "::notice::three=${{ steps.three.outcome }}"
           if $FAIL; then echo "::error::One or more steps failed"; exit 1; fi
 
     - id: one
