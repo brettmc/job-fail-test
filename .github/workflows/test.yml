@@ -23,7 +23,7 @@ jobs:
           echo "two=${{ steps.two.outcome }}"
           echo "three=${{ steps.three.outcome }}"
           echo "::endgroup::"
-          if [ ${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }} == false ]; then \
+          if [ ${{ steps.one.outcome == 'failure' || steps.two.outcome == 'failure' || steps.three.outcome == 'failure' }} == true ]; then \
             echo "::error::One or more steps failed"; \
             exit 1; \
           fi
