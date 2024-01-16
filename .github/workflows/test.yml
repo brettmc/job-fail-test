@@ -17,20 +17,20 @@ jobs:
       with:
         post: if [ true ]; then echo "failed"; fi
 
-    - uses: gacts/run-and-post-run@v1
-      id: post-run-command
-      with:
-        post: |
-          echo "start"
-          X="true"
-          Y="false"
-          XB=true
-          YB=false
-          echo $X
-          echo $XB
-          echo $Y
-          echo $YB
-          echo "finish"
+    #- uses: gacts/run-and-post-run@v1
+    #  id: post-run-command
+    #  with:
+    #    post: |
+    #      echo "start"
+    #      X="true"
+    #      Y="false"
+    #      XB=true
+    #      YB=false
+    #      echo $X
+    #      echo $XB
+    #      echo $Y
+    #      echo $YB
+    #      echo "finish"
 
     - id: one
       #if: ${{ 1 == 2 }}
